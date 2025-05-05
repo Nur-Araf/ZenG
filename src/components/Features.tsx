@@ -82,7 +82,7 @@ const Features = () => {
         <h2 className="text-4xl sm:text-[36px] font-extrabold mb-4">
           How{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1DA1F2] to-[#6C63FF]">
-            ApplyZen Empowers
+            ZenG Empowers
           </span>{" "}
           <span className="text-black dark:text-white">Your </span>
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1DA1F2] to-[#6C63FF]">
@@ -93,7 +93,7 @@ const Features = () => {
         {/* Description */}
         <p className="text-sm md:text-[16px] text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
           From tracking job applications to generating tailored cover letters —
-          ApplyZen makes every step smoother, smarter, and faster. Our platform
+          ZenG makes every step smoother, smarter, and faster. Our platform
           seamlessly integrates with LinkedIn, Indeed, and other portals to
           maximize your chances of landing the right opportunity.
         </p>
