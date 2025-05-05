@@ -66,10 +66,14 @@ const HeroSection = () => {
           {/* Text Content - Left Side */}
           <div className="md:w-1/2 text-left">
             <div
-              className="inline-block px-4 py-1.5 bg-[#1C2B4A]/50  text-xs font-medium tracking-wide rounded-full border border-[#1DA1F2]/30 text-[#1DA1F2] shadow-sm backdrop-blur-sm mb-6"
+              className="inline-block px-4 py-1.5 bg-[#1C2B4A]/50  text-xs font-medium tracking-wide rounded-full border border-[#1DA1F2]/30 text-[#1DA1F2] shadow-sm backdrop-blur-sm mb-4"
               style={{ opacity: 1, transform: "none" }}
             >
-              AI-POWERED SCRIPT READER
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1DA1F2] to-[#6C63FF]">
+                {" "}
+                ZenG
+              </span>{" "}
+              <span className="text-white">Find Your Dream Job</span>
             </div>
 
             <div className="min-h-[4rem] sm:min-h-[5rem] md:min-h-[6rem]">
