@@ -264,7 +264,7 @@ const Pricing = () => {
             boxShadow: "0 12px 20px rgba(0, 0, 0, 0.15)",
           }}
         >
-          <div className="absolute top-0 left-0 h-full w-1.5 bg-[#1DA1F2] rounded-l-xl"></div>
+          <div className="absolute top-0 left-0 h-full w-1.5 bg-[#0A0F2C] rounded-l-xl"></div>
           <h3 className="text-2xl font-extrabold text-gray-800 mb-2">
             Enterprise
           </h3>
