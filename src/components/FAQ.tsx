@@ -1,24 +1,31 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-const FAQ = () => {
-  const [openIndex, setOpenIndex] = useState(null);
-  const faqRefs = useRef([]);
-  const underlineRefs = useRef([]);
-  const lineRef = useRef(null);
+// Define types
+interface FAQItem {
+  question: string;
+  answer: string;
+}
 
-  // Toggle FAQ item
-  const toggleFAQ = (index) => {
+const FAQ: React.FC = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const faqRefs = useRef<HTMLDivElement[]>([]);
+  const underlineRefs = useRef<HTMLDivElement[]>([]);
+  const lineRef = useRef<HTMLDivElement | null>(null);
+
+  const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   useEffect(() => {
     // Animate FAQ cards
     faqRefs.current.forEach((faq) => {
+      if (!faq) return;
       gsap.fromTo(
         faq,
         { opacity: 0, y: 30 },
@@ -37,8 +44,9 @@ const FAQ = () => {
       );
     });
 
-    // Animate FAQ underlines
+    // Animate underlines
     underlineRefs.current.forEach((underline) => {
+      if (!underline) return;
       gsap.fromTo(
         underline,
         { scaleX: 0, transformOrigin: "left" },
@@ -57,29 +65,31 @@ const FAQ = () => {
     });
 
     // Animate header line
-    gsap.fromTo(
-      lineRef.current,
-      { scaleX: 0, transformOrigin: "left" },
-      {
-        scaleX: 1,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: lineRef.current,
-          start: "top 90%",
-          end: "top 70%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
+    if (lineRef.current) {
+      gsap.fromTo(
+        lineRef.current,
+        { scaleX: 0, transformOrigin: "left" },
+        {
+          scaleX: 1,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: lineRef.current,
+            start: "top 90%",
+            end: "top 70%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
 
-    // Cleanup ScrollTriggers on unmount
+    // Cleanup
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
-  const faqs = [
+  const faqs: FAQItem[] = [
     {
       question: "What is ZenG?",
       answer:
@@ -114,7 +124,7 @@ const FAQ = () => {
 
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-gray-200 to-white py-24">
-      {/* Header Section */}
+      {/* Header */}
       <div className="max-w-6xl mx-auto text-center">
         <span className="inline-block px-4 py-1.5 bg-[#1DA1F2]/10 text-[#1DA1F2] text-sm font-semibold rounded-full border border-[#1DA1F2]/30 backdrop-blur-sm shadow-sm mb-4">
           FREQUENTLY ASKED QUESTIONS
@@ -131,12 +141,14 @@ const FAQ = () => {
         </p>
       </div>
 
-      {/* FAQ Accordion */}
+      {/* FAQ List */}
       <div className="max-w-3xl mx-auto px-4">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            ref={(el) => (faqRefs.current[index] = el)}
+            ref={(el) => {
+              faqRefs.current[index] = el!;
+            }}
             className="mb-4 bg-white rounded-xl shadow-md transition-all duration-300 hover:shadow-lg"
           >
             <button
@@ -148,7 +160,7 @@ const FAQ = () => {
                   {faq.question}
                 </span>
                 <div
-                  ref={(el) => (underlineRefs.current[index] = el)}
+                  ref={(el) => {underlineRefs.current[index] = el!;}}
                   className="h-1 bg-[#1DA1F2] mt-1"
                 ></div>
               </div>

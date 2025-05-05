@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { motion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const Pricing = () => {
-  const cardRefs = useRef([]);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const lineRef = useRef(null);
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const Pricing = () => {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
         {/* Free Plan */}
         <motion.div
-          ref={(el) => (cardRefs.current[0] = el)}
+          ref={(el) => {cardRefs.current[0] = el;}}
           className="relative cursor-pointer p-6 bg-white rounded-xl shadow-md transition-all duration-300 hover:shadow-lg"
           whileHover={{
             scale: 1.05,
@@ -167,7 +167,7 @@ const Pricing = () => {
 
         {/* Pro Plan (Highlighted) */}
         <motion.div
-          ref={(el) => (cardRefs.current[1] = el)}
+          ref={(el) => {cardRefs.current[1] = el}}
           className="p-6 cursor-pointer relative bg-white rounded-xl shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg border-r-2 border-t-2 border-b-2 border-[#1DA1F2]"
           whileHover={{
             scale: 1.05,
@@ -257,7 +257,7 @@ const Pricing = () => {
 
         {/* Enterprise Plan */}
         <motion.div
-          ref={(el) => (cardRefs.current[2] = el)}
+          ref={(el) => {cardRefs.current[2] = el}}
           className="p-6 cursor-pointer relative bg-white rounded-xl shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
           whileHover={{
             scale: 1.05,

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -8,10 +8,10 @@ gsap.registerPlugin(ScrollTrigger);
 const Features = () => {
   const pipeRef = useRef(null);
   const waterRef = useRef(null);
-  const platformRefs = useRef([]);
+  const platformRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const pipePath = pipeRef.current;
+    //const pipePath = pipeRef.current;
     const waterPath = waterRef.current;
     const platforms = platformRefs.current;
 
@@ -152,7 +152,7 @@ const Features = () => {
       <div className="relative z-10 max-w-5xl mx-auto space-y-16">
         {/* Platform 1 */}
         <div
-          ref={(el) => (platformRefs.current[0] = el)}
+          ref={(el) => {platformRefs.current[0] = el}}
           className="flex items-center justify-between px-4"
         >
           <div className="w-5/12 bg-gradient-to-r from-[#0A0F2C] to-[#0A66C2] text-white p-6 rounded-xl shadow-lg flex items-start space-x-4">
@@ -186,7 +186,7 @@ const Features = () => {
 
         {/* Platform 2 */}
         <div
-          ref={(el) => (platformRefs.current[1] = el)}
+          ref={(el) => {platformRefs.current[1] = el;}}
           className="flex items-center justify-between px-4"
         >
           <div className="w-5/12"></div>
@@ -220,7 +220,7 @@ const Features = () => {
 
         {/* Platform 3 */}
         <div
-          ref={(el) => (platformRefs.current[2] = el)}
+          ref={(el) => {platformRefs.current[2] = el}}
           className="flex items-center justify-between px-4"
         >
           <div className="w-5/12 bg-gradient-to-r from-[#0A0F2C] to-[#0A66C2] text-white p-6 rounded-xl shadow-lg flex items-start space-x-4">
@@ -254,7 +254,7 @@ const Features = () => {
 
         {/* Platform 4 */}
         <div
-          ref={(el) => (platformRefs.current[3] = el)}
+          ref={(el) => {platformRefs.current[3] = el}}
           className="flex items-center justify-between px-4"
         >
           <div className="w-5/12"></div>
@@ -288,7 +288,7 @@ const Features = () => {
 
         {/* Platform 5 */}
         <div
-          ref={(el) => (platformRefs.current[4] = el)}
+          ref={(el) => {platformRefs.current[4] = el}}
           className="flex items-center justify-between px-4"
         >
           <div className="w-5/12 bg-gradient-to-r from-[#0A0F2C] to-[#0A66C2] text-white p-6 rounded-xl shadow-lg flex items-start space-x-4">
@@ -322,7 +322,7 @@ const Features = () => {
 
         {/* Platform 6 */}
         <div
-          ref={(el) => (platformRefs.current[5] = el)}
+          ref={(el) => {platformRefs.current[5] = el}}
           className="flex items-center justify-between px-4"
         >
           <div className="w-5/12"></div>

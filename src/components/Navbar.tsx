@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-const Navbar = ({ user }) => {
+const Navbar = ({ user = { photoURL: "" } }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -92,7 +92,7 @@ const Navbar = ({ user }) => {
           <div className="hidden md:flex items-center gap-4">
             {user ? (
               <img
-                src={user.photoURL}
+                src={user?.photoURL || ""}
                 alt="User"
                 className="w-9 h-9 rounded-full border-2 border-[#1DA1F2] hover:scale-105 transition-transform"
               />
