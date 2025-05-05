@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-const Navbar = ({ user = { photoURL: "" } }) => {
+const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -90,22 +90,14 @@ const Navbar = ({ user = { photoURL: "" } }) => {
 
           {/* Right Actions */}
           <div className="hidden md:flex items-center gap-4">
-            {user ? (
-              <img
-                src={user?.photoURL || ""}
-                alt="User"
-                className="w-9 h-9 rounded-full border-2 border-[#1DA1F2] hover:scale-105 transition-transform"
-              />
-            ) : (
-              <>
-                <button className="border cursor-pointer border-[#1DA1F2] text-[#1DA1F2] px-4 py-1 rounded-md hover:bg-[#1DA1F2] hover:text-white transition duration-300">
-                  Sign In
-                </button>
-                <button className="bg-[#1DA1F2] cursor-pointer text-white px-4 py-1 rounded-md hover:bg-[#0A66C2] transition duration-300">
-                  Sign Up
-                </button>
-              </>
-            )}
+            <>
+              <button className="border cursor-pointer border-[#1DA1F2] text-[#1DA1F2] px-4 py-1 rounded-md hover:bg-[#1DA1F2] hover:text-white transition duration-300">
+                Sign In
+              </button>
+              <button className="bg-[#1DA1F2] cursor-pointer text-white px-4 py-1 rounded-md hover:bg-[#0A66C2] transition duration-300">
+                Sign Up
+              </button>
+            </>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -144,22 +136,14 @@ const Navbar = ({ user = { photoURL: "" } }) => {
                 </a>
               ))}
               <div className="flex flex-col gap-2 mt-4 w-full">
-                {user ? (
-                  <img
-                    src={user.photoURL}
-                    alt="User"
-                    className="w-10 h-10 rounded-full border-2 border-[#1DA1F2]"
-                  />
-                ) : (
-                  <div className="flex gap-2">
-                    <button className="border w-fit border-[#1DA1F2] text-[#1DA1F2] px-3 py-2 rounded-md hover:bg-[#1DA1F2] hover:text-white transition duration-300 text-left">
-                      Sign In
-                    </button>
-                    <button className="bg-[#1DA1F2] w-fit text-white px-3 py-2 rounded-md hover:bg-[#0A66C2] transition duration-300 text-left">
-                      Sign Up
-                    </button>
-                  </div>
-                )}
+                <div className="flex gap-2">
+                  <button className="border w-fit border-[#1DA1F2] text-[#1DA1F2] px-3 py-2 rounded-md hover:bg-[#1DA1F2] hover:text-white transition duration-300 text-left">
+                    Sign In
+                  </button>
+                  <button className="bg-[#1DA1F2] w-fit text-white px-3 py-2 rounded-md hover:bg-[#0A66C2] transition duration-300 text-left">
+                    Sign Up
+                  </button>
+                </div>
               </div>
             </div>
           </motion.div>
