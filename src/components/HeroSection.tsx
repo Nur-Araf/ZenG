@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { Chrome, Info } from "lucide-react";
 
 const HeroSection = () => {
   const titles = [
@@ -64,6 +65,13 @@ const HeroSection = () => {
         <div className="flex flex-col md:flex-row items-center justify-between">
           {/* Text Content - Left Side */}
           <div className="md:w-1/2 text-left">
+            <div
+              className="inline-block px-4 py-1.5 bg-[#1C2B4A]/50  text-xs font-medium tracking-wide rounded-full border border-[#1DA1F2]/30 text-[#1DA1F2] shadow-sm backdrop-blur-sm mb-6"
+              style={{ opacity: 1, transform: "none" }}
+            >
+              AI-POWERED SCRIPT READER
+            </div>
+
             <div className="min-h-[4rem] sm:min-h-[5rem] md:min-h-[6rem]">
               <AnimatePresence mode="wait">
                 <motion.h1
@@ -108,10 +116,12 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
             >
-              <button className="bg-[#1DA1F2] cursor-pointer text-white px-6 py-3 rounded-md text-lg font-medium hover:bg-[#0A66C2] transition duration-300">
+              <button className="bg-[#1DA1F2] cursor-pointer text-white px-6 py-3 rounded-md text-lg font-medium hover:bg-[#0A66C2] transition duration-300 flex items-center gap-2">
+                <Chrome size={20} />
                 Add to Chrome
               </button>
-              <button className="border cursor-pointer border-[#1DA1F2] text-[#1DA1F2] px-6 py-3 rounded-md text-lg font-medium hover:bg-[#1DA1F2] hover:text-white transition duration-300">
+              <button className="border cursor-pointer border-[#1DA1F2] text-[#1DA1F2] px-6 py-3 rounded-md text-lg font-medium hover:bg-[#1DA1F2] hover:text-white transition duration-300 flex items-center gap-2">
+                <Info size={20} />
                 Learn More
               </button>
             </motion.div>
