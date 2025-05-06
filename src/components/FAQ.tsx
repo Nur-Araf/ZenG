@@ -123,7 +123,7 @@ const FAQ: React.FC = () => {
   ];
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-gray-200 to-white py-24">
+    <div className="relative  bg-gradient-to-b from-gray-200 to-white py-24">
       {/* Header */}
       <div className="max-w-6xl mx-auto text-center">
         <span className="inline-block px-4 py-1.5 bg-[#1DA1F2]/10 text-[#1DA1F2] text-sm font-semibold rounded-full border border-[#1DA1F2]/30 backdrop-blur-sm shadow-sm mb-4">
@@ -160,7 +160,9 @@ const FAQ: React.FC = () => {
                   {faq.question}
                 </span>
                 <div
-                  ref={(el) => {underlineRefs.current[index] = el!;}}
+                  ref={(el) => {
+                    underlineRefs.current[index] = el!;
+                  }}
                   className="h-1 bg-[#1DA1F2] mt-1"
                 ></div>
               </div>

@@ -70,7 +70,7 @@ const Features = () => {
   }, []);
 
   return (
-    <div className="relative py-24 min-h-screen bg-gradient-to-t from-gray-200 to-white">
+    <div className="relative py-24 min-h-[100dvh] bg-gradient-to-t from-gray-200 to-white">
       <div className="z-0 absolute -left-[20%] top-[20%] h-[500px] w-[500px] translate-x-1/4 rounded-full opacity-30 blur-[100px] bg-gradient-to-t from-[#6C63FF] to-[#1DA1F2] lg:tap-1/2 lg:translate-y-1/2"></div>
       <div className="max-w-6xl mx-auto text-center z-20">
         {/* Tagline */}
@@ -152,7 +152,9 @@ const Features = () => {
       <div className="relative z-10 max-w-5xl mx-auto space-y-16">
         {/* Platform 1 */}
         <div
-          ref={(el) => {platformRefs.current[0] = el}}
+          ref={(el) => {
+            platformRefs.current[0] = el;
+          }}
           className="flex items-center justify-between px-4"
         >
           <div className="w-5/12 bg-gradient-to-r from-[#0A0F2C] to-[#0A66C2] text-white p-6 rounded-xl shadow-lg flex items-start space-x-4">
@@ -186,7 +188,9 @@ const Features = () => {
 
         {/* Platform 2 */}
         <div
-          ref={(el) => {platformRefs.current[1] = el;}}
+          ref={(el) => {
+            platformRefs.current[1] = el;
+          }}
           className="flex items-center justify-between px-4"
         >
           <div className="w-5/12"></div>
@@ -220,7 +224,9 @@ const Features = () => {
 
         {/* Platform 3 */}
         <div
-          ref={(el) => {platformRefs.current[2] = el}}
+          ref={(el) => {
+            platformRefs.current[2] = el;
+          }}
           className="flex items-center justify-between px-4"
         >
           <div className="w-5/12 bg-gradient-to-r from-[#0A0F2C] to-[#0A66C2] text-white p-6 rounded-xl shadow-lg flex items-start space-x-4">
@@ -254,7 +260,9 @@ const Features = () => {
 
         {/* Platform 4 */}
         <div
-          ref={(el) => {platformRefs.current[3] = el}}
+          ref={(el) => {
+            platformRefs.current[3] = el;
+          }}
           className="flex items-center justify-between px-4"
         >
           <div className="w-5/12"></div>
@@ -288,7 +296,9 @@ const Features = () => {
 
         {/* Platform 5 */}
         <div
-          ref={(el) => {platformRefs.current[4] = el}}
+          ref={(el) => {
+            platformRefs.current[4] = el;
+          }}
           className="flex items-center justify-between px-4"
         >
           <div className="w-5/12 bg-gradient-to-r from-[#0A0F2C] to-[#0A66C2] text-white p-6 rounded-xl shadow-lg flex items-start space-x-4">
@@ -322,7 +332,9 @@ const Features = () => {
 
         {/* Platform 6 */}
         <div
-          ref={(el) => {platformRefs.current[5] = el}}
+          ref={(el) => {
+            platformRefs.current[5] = el;
+          }}
           className="flex items-center justify-between px-4"
         >
           <div className="w-5/12"></div>

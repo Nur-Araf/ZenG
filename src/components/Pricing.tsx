@@ -55,7 +55,7 @@ const Pricing = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-t from-gray-200 to-white py-24">
+    <div className="relative bg-gradient-to-t from-gray-200 to-white py-24">
       {/* Header Section */}
       <div className="max-w-6xl mx-auto text-center">
         <span className="inline-block px-4 py-1.5 bg-[#1DA1F2]/10 text-[#1DA1F2] text-sm font-semibold rounded-full border border-[#1DA1F2]/30 backdrop-blur-sm shadow-sm mb-4">
@@ -77,7 +77,9 @@ const Pricing = () => {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
         {/* Free Plan */}
         <motion.div
-          ref={(el) => {cardRefs.current[0] = el;}}
+          ref={(el) => {
+            cardRefs.current[0] = el;
+          }}
           className="relative cursor-pointer p-6 bg-white rounded-xl shadow-md transition-all duration-300 hover:shadow-lg"
           whileHover={{
             scale: 1.05,
@@ -167,7 +169,9 @@ const Pricing = () => {
 
         {/* Pro Plan (Highlighted) */}
         <motion.div
-          ref={(el) => {cardRefs.current[1] = el}}
+          ref={(el) => {
+            cardRefs.current[1] = el;
+          }}
           className="p-6 cursor-pointer relative bg-white rounded-xl shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg border-r-2 border-t-2 border-b-2 border-[#1DA1F2]"
           whileHover={{
             scale: 1.05,
@@ -257,7 +261,9 @@ const Pricing = () => {
 
         {/* Enterprise Plan */}
         <motion.div
-          ref={(el) => {cardRefs.current[2] = el}}
+          ref={(el) => {
+            cardRefs.current[2] = el;
+          }}
           className="p-6 cursor-pointer relative bg-white rounded-xl shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
           whileHover={{
             scale: 1.05,

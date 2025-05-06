@@ -47,7 +47,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0F2C]">
+    <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#0A0F2C]">
       <div className="z-0 absolute -left-[20%] top-[10%] h-[500px] w-[500px] translate-x-1/4 rounded-full opacity-30 blur-[100px]  bg-[#6C63FF] lg:tap-1/2 lg:translate-y-1/2"></div>
       {/* Background Layers */}
       <div className="absolute inset-0 z-0">
