@@ -26,7 +26,7 @@ const benefits = [
 
 const HelpsSection = () => {
   return (
-    <section className="py-24 px-6 sm:px-12 lg:px-24 bg-gradient-to-b from-gray-200 to-white dark:from-[#0E0F1A] dark:to-[#1C1F2E] text-gray-900 dark:text-white">
+    <section className="py-24 px-6 sm:px-12 lg:px-24 bg-gradient-to-b from-gray-200 to-white">
       <div className="max-w-6xl mx-auto text-center">
         <span className="inline-block px-4 py-1.5 bg-[#1DA1F2]/10 text-[#1DA1F2] text-sm font-semibold rounded-full border border-[#1DA1F2]/30 backdrop-blur-sm shadow-sm mb-4">
           HOW IT HELPS
@@ -37,9 +37,9 @@ const HelpsSection = () => {
             {" "}
             How ZenG
           </span>{" "}
-          <span className="text-black dark:text-white">Powers Your Win</span>
+          <span className="text-black ">Powers Your Win</span>
         </h2>
-        <p className="text-sm md:text-[16px] text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+        <p className="text-sm md:text-[16px] text-gray-600  max-w-3xl mx-auto mb-12 leading-relaxed">
           ZenG is your ultimate job search ally, streamlining applications and
           putting you ahead of the competition with less effort.
         </p>
@@ -53,14 +53,14 @@ const HelpsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: idx * 0.25, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="group relative bg-white dark:bg-[#1C1F2E] p-8 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-700 hover:border-[#1DA1F2]/50 hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer z-20"
+            className="group relative bg-white  p-8 rounded-3xl shadow-lg border border-gray-100  hover:border-[#1DA1F2]/50 hover:shadow-2xl transition-all duration-300 overflow-hidden cursor-pointer z-20"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#1DA1F2]/10 to-[#6C63FF]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="relative mb-6">{benefit.icon}</div>
             <h3 className="text-[20px] font-bold mb-4 group-hover:text-[#1DA1F2] transition-colors duration-200">
               {benefit.title}
             </h3>
-            <p className="text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+            <p className="text-base text-gray-600 leading-relaxed">
               {benefit.description}
             </p>
           </motion.div>

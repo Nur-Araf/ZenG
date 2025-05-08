@@ -84,14 +84,14 @@ const Features = () => {
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1DA1F2] to-[#6C63FF]">
             ZenG Empowers
           </span>{" "}
-          <span className="text-black dark:text-white">Your </span>
+          <span className="text-black">Your </span>
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1DA1F2] to-[#6C63FF]">
             Job Hunt
           </span>{" "}
         </h2>
 
         {/* Description */}
-        <p className="text-sm md:text-[16px] text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+        <p className="text-sm md:text-[16px] text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">
           From tracking job applications to generating tailored cover letters —
           ZenG makes every step smoother, smarter, and faster. Our platform
           seamlessly integrates with LinkedIn, Indeed, and other portals to

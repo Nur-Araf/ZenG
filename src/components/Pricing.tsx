@@ -65,9 +65,9 @@ const Pricing = () => {
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#1DA1F2] to-[#6C63FF]">
             Choose Your ZenG
           </span>{" "}
-          <span className="text-black dark:text-white">Plan</span>
+          <span className="text-black ">Plan</span>
         </h2>
-        <p className="text-sm md:text-[16px] text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+        <p className="text-sm md:text-[16px] text-gray-600  max-w-3xl mx-auto mb-12 leading-relaxed">
           Select the perfect plan to supercharge your job search with ZenG’s
           powerful tools for LinkedIn and Indeed.
         </p>

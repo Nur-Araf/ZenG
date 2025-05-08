@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -91,12 +92,18 @@ const Navbar = () => {
           {/* Right Actions */}
           <div className="hidden md:flex items-center gap-4">
             <>
-              <button className="border cursor-pointer border-[#1DA1F2] text-[#1DA1F2] px-4 py-1 rounded-md hover:bg-[#1DA1F2] hover:text-white transition duration-300">
+              {/* <button className="border cursor-pointer border-[#1DA1F2] text-[#1DA1F2] px-4 py-1 rounded-md hover:bg-[#1DA1F2] hover:text-white transition duration-300">
                 Sign In
               </button>
               <button className="bg-[#1DA1F2] cursor-pointer text-white px-4 py-1 rounded-md hover:bg-[#0A66C2] transition duration-300">
                 Sign Up
-              </button>
+              </button> */}
+              <Link
+                to="/dashboard"
+                className="border cursor-pointer border-[#1DA1F2] text-[#1DA1F2] px-4 py-1 rounded-md hover:bg-[#1DA1F2] hover:text-white transition duration-300"
+              >
+                Dashboard
+              </Link>
             </>
           </div>
 
@@ -136,14 +143,20 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="flex flex-col gap-2 mt-4 w-full">
-                <div className="flex gap-2">
+                {/* <div className="flex gap-2">
                   <button className="border w-fit border-[#1DA1F2] text-[#1DA1F2] px-3 py-2 rounded-md hover:bg-[#1DA1F2] hover:text-white transition duration-300 text-left">
                     Sign In
                   </button>
                   <button className="bg-[#1DA1F2] w-fit text-white px-3 py-2 rounded-md hover:bg-[#0A66C2] transition duration-300 text-left">
                     Sign Up
                   </button>
-                </div>
+                </div> */}
+                <Link
+                  to="/dashboard"
+                  className="border cursor-pointer border-[#1DA1F2] text-[#1DA1F2] px-4 py-1 rounded-md hover:bg-[#1DA1F2] hover:text-white transition duration-300"
+                >
+                  Dashboard
+                </Link>
               </div>
             </div>
           </motion.div>
