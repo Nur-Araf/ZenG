@@ -5,6 +5,8 @@ import Home from "./components/Home";
 import DashboardLayout from "./components/dashboard/DashboardLayout";
 import HomePage from "./components/dashboard/HomePage";
 import Resume from "./components/dashboard/Resume";
+import SignIn from "./components/auth/Login";
+import Register from "./components/auth/Register";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +16,14 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/signin",
+        element: <SignIn />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },
