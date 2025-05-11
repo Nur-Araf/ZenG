@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { gsap } from "gsap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthBenefits from "./AuthBenefit";
-
+import { useAuthStore } from "../../store/authStore";
+import { api } from "../../store/interceptor";
 interface FormInputs {
   name: string;
   email: string;
@@ -34,6 +35,8 @@ const Register: React.FC = () => {
     useState<boolean>(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const { setAuthenticated } = useAuthStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     gsap.fromTo(
@@ -124,10 +127,21 @@ const Register: React.FC = () => {
     }
   }, [password]);
 
-  const onSubmit: SubmitHandler<FormInputs> = (data) => {
-    console.log("Form submitted:", data);
-    //TODO
-    // Add notification When User Registered
+  const onSubmit: SubmitHandler<FormInputs> = async (data) => {
+    try {
+      const response = await api.post("/register", {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      });
+      console.log("Registration response:", response.data);
+      setAuthenticated(true);
+      console.log("Registration successful");
+      // place a alert
+      navigate("/dashboard"); // Redirect to dashboard or protected route
+    } catch (error) {
+      console.error("Registration failed:", error);
+    }
   };
 
   const handleGoogleLogin = () => {
@@ -145,16 +159,11 @@ const Register: React.FC = () => {
 
         {/* Signup Card */}
         <div className="form-container relative max-w-md w-full mx-auto p-8 rounded-2xl bg-[#0A0F2C] shadow-2xl lg:w-1/2 lg:mx-0">
-          {/* Particle background */}
           <div
             ref={containerRef}
             className="absolute inset-0 z-0 pointer-events-none"
           />
-
-          {/* Blur Bubble */}
           <div className="z-0 absolute -left-[20%] top-[10%] h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] md:h-[500px] md:w-[500px] translate-x-1/4 rounded-full opacity-30 blur-[150px] bg-[#6C63FF]" />
-
-          {/* Form Content */}
           <div className="relative z-10">
             <h2 className="text-3xl font-bold text-center mb-6 text-white">
               <span
@@ -358,13 +367,11 @@ const Register: React.FC = () => {
                 Sign Up
               </button>
             </form>
-
             <div className="flex items-center gap-4 my-6">
               <hr className="flex-1 border-white/30" />
               <span className="text-white/70">or</span>
               <hr className="flex-1 border-white/30" />
             </div>
-
             <button
               onClick={handleGoogleLogin}
               className="flex items-center gap-2 px-4 py-2 mx-auto bg-white/10 border border-white/30 rounded-full text-white hover:scale-105 hover:shadow-lg transition-transform duration-200 cursor-pointer"
@@ -389,7 +396,6 @@ const Register: React.FC = () => {
               </svg>
               Sign up with Google
             </button>
-
             <p className="mt-4 text-center text-sm text-white">
               Already have an account?{" "}
               <Link
