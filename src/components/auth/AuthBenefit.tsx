@@ -33,7 +33,7 @@ const AuthBenefits: React.FC = () => {
           Elevate Your Job Application Journey
         </h1>
         <p className="text-base md:text-lg mb-8 text-white/90 animate-item">
-          Join thousands of job seekers who trust ApplyZen to streamline their
+          Join thousands of job seekers who trust ZenG to streamline their
           applications and land their dream roles.
         </p>
         <div className="space-y-6">

@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../../store/authStore";
 import { api } from "../../store/interceptor";
+import { toast } from "react-toastify";
 
 interface FormInputs {
   email: string;
@@ -19,7 +20,7 @@ const Login: React.FC = () => {
   } = useForm<FormInputs>();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { setAuthenticated } = useAuthStore();
+  const { setAuthenticated, setRefreshToken } = useAuthStore();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -72,16 +73,19 @@ const Login: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     try {
-      await api.post("/login", {
+      const response = await api.post("/login", {
         username: data.email,
         password: data.password,
       });
+      console.log("Login response:", response.data);
       setAuthenticated(true);
-      // place a alert
-      console.log("Login successful");
+      setRefreshToken(response.data.refresh_token);
+      localStorage.setItem("refreshToken", response.data.refresh_token);
+      toast.success("Login successful!");
       navigate("/dashboard");
     } catch (error) {
       console.error("Login failed:", error);
+      toast.error("Login failed. Please check your credentials.");
     }
   };
 
@@ -102,7 +106,7 @@ const Login: React.FC = () => {
                   backgroundImage: "linear-gradient(90deg, #1DA1F2, #6C63FF)",
                 }}
               >
-                ApplyZen
+                ZenG
               </span>{" "}
               Login
             </h2>

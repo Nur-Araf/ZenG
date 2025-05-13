@@ -8,7 +8,10 @@ import {
   Upload,
   FilesIcon,
 } from "lucide-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAuthStore } from "../../store/authStore";
+import { toast } from "react-toastify";
+import { api } from "../../store/interceptor";
 
 interface SidebarProps {
   isCollapsed: boolean;
@@ -28,6 +31,24 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleCollapse }) => {
       ease: "power4.inOut",
     });
   }, [isCollapsed]);
+  const navigate = useNavigate();
+  const { clearAuth, refreshToken } = useAuthStore();
+
+  const handleLogout = async () => {
+    try {
+      if (!refreshToken) {
+        throw new Error("No refresh token available");
+      }
+      await api.post("/logout", { refresh_token: refreshToken });
+      localStorage.removeItem("refreshToken");
+      clearAuth();
+      toast.success("Logged out successfully!");
+      navigate("/signin");
+    } catch (error) {
+      console.error("Logout failed:", error);
+      toast.error("Logout failed. Please try again.");
+    }
+  };
 
   return (
     <aside
@@ -151,7 +172,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed, toggleCollapse }) => {
           className={`flex items-center ${
             isCollapsed ? "justify-center py-3 px-3" : "space-x-3 py-3 px-3"
           } text-[18px] w-full rounded-md transition-all duration-300 hover:bg-[#6C63FF]/20 hover:text-[#1DA1F2] hover:scale-105 cursor-pointer`}
-          onClick={() => console.log("Logout clicked")} // Replace with actual logout logic
+          onClick={handleLogout} // Replace with actual logout logic
           aria-label="Logout"
         >
           <LogOut size={24} className="min-w-[20px] min-h-[20px]" />

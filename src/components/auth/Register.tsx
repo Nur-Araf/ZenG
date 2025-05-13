@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthBenefits from "./AuthBenefit";
 import { useAuthStore } from "../../store/authStore";
 import { api } from "../../store/interceptor";
+import { toast } from "react-toastify";
 interface FormInputs {
   name: string;
   email: string;
@@ -35,7 +36,7 @@ const Register: React.FC = () => {
     useState<boolean>(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const { setAuthenticated } = useAuthStore();
+  const { setAuthenticated, setRefreshToken } = useAuthStore();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -129,6 +130,7 @@ const Register: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormInputs> = async (data) => {
     try {
+      console.log("Sending registration data:", data); // Log request data
       const response = await api.post("/register", {
         name: data.name,
         email: data.email,
@@ -136,11 +138,13 @@ const Register: React.FC = () => {
       });
       console.log("Registration response:", response.data);
       setAuthenticated(true);
-      console.log("Registration successful");
-      // place a alert
-      navigate("/dashboard"); // Redirect to dashboard or protected route
+      setRefreshToken(response.data.refresh_token);
+      localStorage.setItem("refreshToken", response.data.refresh_token);
+      console.log("Registration successful:", response.data.refresh_token);
+      toast.success("Registration successful!");
+      navigate("/dashboard");
     } catch (error) {
-      console.error("Registration failed:", error);
+      console.error("Registration error:", error);
     }
   };
 
@@ -172,7 +176,7 @@ const Register: React.FC = () => {
                   backgroundImage: "linear-gradient(90deg, #1DA1F2, #6C63FF)",
                 }}
               >
-                ApplyZen
+                ZenG
               </span>{" "}
               Signup
             </h2>

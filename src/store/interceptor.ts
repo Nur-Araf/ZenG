@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useAuthStore } from "./authStore";
 
 const api = axios.create({
   baseURL: "http://localhost:8000",
@@ -15,18 +14,28 @@ api.interceptors.response.use(
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
-        // Send refresh request (no body needed if backend handles refresh token)
-        await axios.post(
+        // Retrieve refresh token from localStorage
+        const refreshToken = localStorage.getItem("refreshToken");
+        if (!refreshToken) {
+          throw new Error("No refresh token available");
+        }
+
+        // Send refresh request with refresh token in body
+        const refreshResponse = await axios.post(
           "http://localhost:8000/refresh",
-          {},
+          { refresh_token: refreshToken },
           { withCredentials: true }
         );
 
-        // Retry original request (cookie will be updated automatically)
+        // Store new refresh token
+        const newRefreshToken = refreshResponse.data.refresh_token;
+        localStorage.setItem("refreshToken", newRefreshToken);
+
+        // Retry original request (cookie with new access token is sent automatically)
         return api(originalRequest);
       } catch (refreshError) {
         // Clear auth state and redirect to login
-        useAuthStore.getState().clearAuth();
+        localStorage.removeItem("refreshToken");
         // Note: This should ideally be handled in a component with useNavigate
         window.location.href = "/login";
         return Promise.reject(refreshError);
